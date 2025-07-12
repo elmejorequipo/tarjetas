@@ -3,187 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Felicidades, Lic. Paola! ♡</title>
-    <style>
-        /* --- Importar una fuente Kawaii desde Google Fonts --- */
-        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
+    <title>¡Felicidades, Lic. Paola! ♡ Un Detalle Kawaii</title>
+    
+    <meta name="description" content="Una tarjeta de felicitación interactiva y kawaii para la Lic. Paola Céspedes por el Día del Psicólogo en Bolivia. ¡Envía tus buenos deseos de una forma adorable y especial!">
+    <meta name="keywords" content="Día del Psicólogo Bolivia, felicitación psicólogo, tarjeta interactiva, tarjeta kawaii, Lic. Paola Céspedes, psicología, Gabriel Rolón">
+    
+    <meta property="og:title" content="¡Un Detalle Kawaii para la Lic. Paola Céspedes! 💖">
+    <meta property="og:description" content="Tarjeta interactiva y animada por el Día del Psicólogo en Bolivia.">
+    <meta property="og:image" content="https://i.imgur.com/8aZ3E2z.png"> <meta property="og:url" content="#"> <meta property="og:type" content="website">
 
-        /* --- Estilos Generales --- */
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Potta+One&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Unidades fluidas para fuentes */
+            --font-size-h1: clamp(2.2rem, 8vw, 3.5rem);
+            --font-size-base: clamp(1rem, 4vw, 1.2rem);
+            --font-size-small: clamp(0.9rem, 3vw, 1rem);
+        }
+
         body {
-            font-family: 'Baloo 2', cursive;
-            background: #fdf4f6; /* Fondo rosa muy pálido */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Potta One', cursive;
+            background: #fdf4f6;
+            display: grid; /* Usamos grid para centrar perfectamente */
+            place-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 20px;
+            padding: 1rem;
             box-sizing: border-box;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Contenedor para las partículas */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .particle {
+            position: absolute;
+            font-size: 2rem;
+            animation: fly-out 1.2s ease-out forwards;
+        }
+
+        @keyframes fly-out {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0.5) rotate(360deg);
+            }
         }
 
         /* --- Estructura de la Tarjeta --- */
         .card {
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* Gradiente celeste pastel */
-            color: #5b647e; /* Color de texto gris azulado oscuro */
-            width: 90%;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            color: #5b647e;
+            width: 100%;
             max-width: 400px;
-            border-radius: 30px; /* Bordes muy redondeados */
+            border-radius: 30px;
             box-shadow: 0 10px 25px rgba(188, 214, 235, 0.7);
-            padding: 30px;
+            padding: 1.5rem;
             text-align: center;
             cursor: pointer;
             border: 4px solid white;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animación elástica */
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            animation: float 4s ease-in-out infinite; /* Animación flotante */
         }
 
-        /* --- Ilustración del Cerebrito Kawaii (SVG) --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- Ilustración Kawaii --- */
         .kawaii-brain {
             width: 100px;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
         }
-        .kawaii-brain .blush {
-            fill: #ffafcc; /* Color de las mejillas */
-        }
-        .kawaii-brain .outline {
-            fill: #8b96b6; /* Color del cerebro */
-        }
-        .kawaii-brain .eyes-mouth {
-            stroke: #5b647e; /* Color de ojos y boca */
-            stroke-width: 3px;
-            fill: none;
+        .kawaii-brain .blush { fill: #ffafcc; }
+        .kawaii-brain .outline { fill: #8b96b6; }
+        .kawaii-brain .eyes { animation: blink 3s infinite; }
+
+        @keyframes blink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
         }
 
+        /* --- Textos --- */
         .card h1 {
-            font-size: 2.2em;
+            font-family: 'Mochiy Pop One', sans-serif;
+            font-size: var(--font-size-h1);
             margin: 0;
             color: #4a546d;
+            line-height: 1.1;
         }
 
-        /* --- Contenido Oculto --- */
         .hidden-content {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: max-height 0.8s ease, opacity 0.6s 0.2s ease;
+            transition: max-height 0.8s ease-in-out, opacity 0.6s 0.2s ease-in-out;
         }
 
-        /* --- Estilos cuando la tarjeta está activa --- */
         .card.active {
-            transform: scale(1.05); /* Efecto de crecimiento */
-            background: linear-gradient(135deg, #f6e1ff 0%, #d8baff 100%); /* Gradiente lavanda */
+            animation-play-state: paused; /* Pausamos la animación de flotar */
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #f6e1ff 0%, #d8baff 100%);
         }
-
+        
         .card.active .hidden-content {
-            max-height: 600px; /* Altura suficiente */
+            max-height: 700px; /* Más espacio para móviles */
             opacity: 1;
         }
         
         #click-prompt {
-            font-size: 1.1em;
+            font-size: var(--font-size-base);
             color: #6a748c;
-            margin-top: 10px;
+            margin-top: 1rem;
         }
 
         .personal-greeting {
-            font-size: 1.1em;
-            margin: 20px 0;
+            font-size: var(--font-size-base);
+            margin: 1.5rem 0;
         }
         
-        .personal-greeting strong {
-            color: #6d5b7e;
-        }
+        .personal-greeting strong { color: #6d5b7e; }
 
-        /* --- Sección de Frases de Rolón (Estilo Kawaii) --- */
+        /* --- Sección de Frases --- */
         .quote-section {
             background: rgba(255, 255, 255, 0.5);
             border-radius: 20px;
-            padding: 20px;
-            margin-top: 25px;
+            padding: 1rem;
+            margin-top: 1.5rem;
         }
 
         #quote-display {
-            font-size: 1.15em;
-            font-weight: 400;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: var(--font-size-base);
+            min-height: 100px;
+            display: grid;
+            place-items: center;
             transition: opacity 0.4s ease;
             color: #535279;
         }
-        #quote-display.fade-out {
-            opacity: 0;
-        }
+        #quote-display.fade-out { opacity: 0; }
         
         .quote-section small {
             font-weight: bold;
             color: #7d7bb0;
-            margin-top: 5px;
+            margin-top: 0.5rem;
             display: block;
+            font-size: var(--font-size-small);
         }
 
         #new-quote-button {
-            font-family: 'Baloo 2', cursive;
-            background-color: #ffffff;
+            font-family: 'Mochiy Pop One', sans-serif;
+            background: #ffffff;
             color: #a097d1;
             border: none;
-            padding: 12px 25px;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: 700;
-            margin-top: 15px;
+            font-size: var(--font-size-small);
+            margin-top: 1rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(188, 178, 222, 0.6);
         }
 
         #new-quote-button:hover {
-            transform: scale(1.1) rotate(5deg); /* Efecto de giro y crecimiento */
+            transform: scale(1.1) rotate(5deg);
             box-shadow: 0 6px 15px rgba(188, 178, 222, 0.8);
         }
     </style>
 </head>
 <body>
 
-    <div class="card" id="greetingCard">
+    <div id="particle-container"></div>
+    <audio id="click-sound" src="https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3" preload="auto"></audio>
+
+    <main class="card" id="greetingCard">
         
-        <svg class="kawaii-brain" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <ellipse class="blush" cx="28" cy="65" rx="8" ry="5"/>
-            <ellipse class="blush" cx="72" cy="65" rx="8" ry="5"/>
-            <path class="outline" d="M50,15 C20,15 10,40 10,60 C10,90 30,95 50,95 C70,95 90,90 90,60 C90,40 80,15 50,15 Z"/>
-            <path class="outline" d="M50,95 C40,95 40,70 50,70 C60,70 60,95 50,95 Z"/>
-            <circle class="eyes-mouth" cx="35" cy="50" r="3"/>
-            <circle class="eyes-mouth" cx="65" cy="50" r="3"/>
-            <path class="eyes-mouth" d="M45,70 Q50,80 55,70"/>
+        <svg class="kawaii-brain" viewBox="0 0 100 85" xmlns="http://www.w3.org/2000/svg">
+            <title>Ilustración de cerebro kawaii</title>
+            <desc>Un cerebro de estilo de dibujos animados sonriendo y con mejillas sonrosadas.</desc>
+            <g>
+                <path fill="#8b96b6" d="M84.2,35.6C79.1,19,65.5,15,50,15S20.9,19,15.8,35.6C9.1,58.2,19.1,75,50,75S90.9,58.2,84.2,35.6Z"/>
+                <ellipse class="blush" cx="28" cy="55" rx="8" ry="5"/>
+                <ellipse class="blush" cx="72" cy="55" rx="8" ry="5"/>
+                <g class="eyes" fill="#FFFFFF">
+                    <circle cx="35" cy="45" r="5"/>
+                    <circle cx="65" cy="45" r="5"/>
+                </g>
+                <path fill="none" stroke="#5b647e" stroke-width="2" stroke-linecap="round" d="M45,60 Q50,68 55,60"/>
+            </g>
         </svg>
 
         <h1>¡Felicidades, Lic. Paola! ♡</h1>
-        <p id="click-prompt">¡Toca aquí para una sorpresa! ✨</p>
+        <p id="click-prompt">( ´ ▽ ` )ﾉ ¡Toca para una sorpresa! ✨</p>
         
-        <div class="hidden-content">
+        <section class="hidden-content">
             <div class="personal-greeting">
-                <p><strong>¡Feliz Día del Psicólogo en Bolivia!</strong></p>
-                <p>Gracias por ser una guía tan genial y por cuidar la salud mental con tanto cariño y profesionalismo. ¡Eres increíble! 🧠💖</p>
+                <p><strong>(づ｡◕‿‿◕｡)づ ¡Feliz Día del Psicólogo en Bolivia!</strong></p>
+                <p>Gracias por ser una guía tan genial y por cuidar la salud mental con tanto cariño. ¡Tu trabajo es pura magia! 🧠💖</p>
             </div>
 
-            <div class="quote-section">
+            <section class="quote-section">
                 <p id="quote-display"></p>
                 <small>~ Gabriel Rolón ~</small>
-                <button id="new-quote-button">Otra frase linda ✨</button>
-            </div>
-        </div>
-    </div>
+                <button id="new-quote-button">Otra frase linda ✧</button>
+            </section>
+        </section>
+    </main>
 
     <script>
         const greetingCard = document.getElementById('greetingCard');
         const clickPrompt = document.getElementById('click-prompt');
+        const clickSound = document.getElementById('click-sound');
+        const particleContainer = document.getElementById('particle-container');
+        
         const rolonQuotes = [
             "El dolor que no se habla es un dolor que no se va.",
             "La felicidad no es un lugar al que se llega, sino una manera de viajar.",
             "La angustia es una señal de que estamos vivos y de que algo nos importa.",
             "No se trata de encontrar a alguien que te complete, sino de encontrar a alguien con quien compartir tu incompletitud.",
-            "Solo quien se anima a estar solo está preparado para amar sin depender.",
-            "A veces, el que se va, se lleva más de lo que deja. Y a veces, el que se queda, pierde más de lo que retiene."
+            "Solo quien se anima a estar solo está preparado para amar sin depender."
         ];
         
         const quoteDisplay = document.getElementById('quote-display');
@@ -198,10 +254,26 @@
             }, 400);
         }
 
+        function createParticles() {
+            const particles = ['💖', '✨', '⭐', '❤️', '💫'];
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${50 + (Math.random() * 20 - 10)}%`; // Alrededor del centro
+                particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+                particleContainer.appendChild(particle);
+                setTimeout(() => particle.remove(), 1200);
+            }
+        }
+
         greetingCard.addEventListener('click', () => {
             if (!greetingCard.classList.contains('active')) {
                 greetingCard.classList.add('active');
                 clickPrompt.style.display = 'none';
+                clickSound.play().catch(e => console.log("La interacción del usuario es necesaria para reproducir el sonido."));
+                createParticles();
             }
         });
 
