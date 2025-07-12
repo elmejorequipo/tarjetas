@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Felicidades, Lic. Paola! ♡</title>
+    <style>
+        /* --- Importar una fuente Kawaii desde Google Fonts --- */
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
+
+        /* --- Estilos Generales --- */
+        body {
+            font-family: 'Baloo 2', cursive;
+            background: #fdf4f6; /* Fondo rosa muy pálido */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- Estructura de la Tarjeta --- */
+        .card {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* Gradiente celeste pastel */
+            color: #5b647e; /* Color de texto gris azulado oscuro */
+            width: 90%;
+            max-width: 400px;
+            border-radius: 30px; /* Bordes muy redondeados */
+            box-shadow: 0 10px 25px rgba(188, 214, 235, 0.7);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            border: 4px solid white;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animación elástica */
+        }
+
+        /* --- Ilustración del Cerebrito Kawaii (SVG) --- */
+        .kawaii-brain {
+            width: 100px;
+            margin-bottom: 15px;
+        }
+        .kawaii-brain .blush {
+            fill: #ffafcc; /* Color de las mejillas */
+        }
+        .kawaii-brain .outline {
+            fill: #8b96b6; /* Color del cerebro */
+        }
+        .kawaii-brain .eyes-mouth {
+            stroke: #5b647e; /* Color de ojos y boca */
+            stroke-width: 3px;
+            fill: none;
+        }
+
+        .card h1 {
+            font-size: 2.2em;
+            margin: 0;
+            color: #4a546d;
+        }
+
+        /* --- Contenido Oculto --- */
+        .hidden-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease, opacity 0.6s 0.2s ease;
+        }
+
+        /* --- Estilos cuando la tarjeta está activa --- */
+        .card.active {
+            transform: scale(1.05); /* Efecto de crecimiento */
+            background: linear-gradient(135deg, #f6e1ff 0%, #d8baff 100%); /* Gradiente lavanda */
+        }
+
+        .card.active .hidden-content {
+            max-height: 600px; /* Altura suficiente */
+            opacity: 1;
+        }
+        
+        #click-prompt {
+            font-size: 1.1em;
+            color: #6a748c;
+            margin-top: 10px;
+        }
+
+        .personal-greeting {
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+        
+        .personal-greeting strong {
+            color: #6d5b7e;
+        }
+
+        /* --- Sección de Frases de Rolón (Estilo Kawaii) --- */
+        .quote-section {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        #quote-display {
+            font-size: 1.15em;
+            font-weight: 400;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+            color: #535279;
+        }
+        #quote-display.fade-out {
+            opacity: 0;
+        }
+        
+        .quote-section small {
+            font-weight: bold;
+            color: #7d7bb0;
+            margin-top: 5px;
+            display: block;
+        }
+
+        #new-quote-button {
+            font-family: 'Baloo 2', cursive;
+            background-color: #ffffff;
+            color: #a097d1;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(188, 178, 222, 0.6);
+        }
+
+        #new-quote-button:hover {
+            transform: scale(1.1) rotate(5deg); /* Efecto de giro y crecimiento */
+            box-shadow: 0 6px 15px rgba(188, 178, 222, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="greetingCard">
+        
+        <svg class="kawaii-brain" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <ellipse class="blush" cx="28" cy="65" rx="8" ry="5"/>
+            <ellipse class="blush" cx="72" cy="65" rx="8" ry="5"/>
+            <path class="outline" d="M50,15 C20,15 10,40 10,60 C10,90 30,95 50,95 C70,95 90,90 90,60 C90,40 80,15 50,15 Z"/>
+            <path class="outline" d="M50,95 C40,95 40,70 50,70 C60,70 60,95 50,95 Z"/>
+            <circle class="eyes-mouth" cx="35" cy="50" r="3"/>
+            <circle class="eyes-mouth" cx="65" cy="50" r="3"/>
+            <path class="eyes-mouth" d="M45,70 Q50,80 55,70"/>
+        </svg>
+
+        <h1>¡Felicidades, Lic. Paola! ♡</h1>
+        <p id="click-prompt">¡Toca aquí para una sorpresa! ✨</p>
+        
+        <div class="hidden-content">
+            <div class="personal-greeting">
+                <p><strong>¡Feliz Día del Psicólogo en Bolivia!</strong></p>
+                <p>Gracias por ser una guía tan genial y por cuidar la salud mental con tanto cariño y profesionalismo. ¡Eres increíble! 🧠💖</p>
+            </div>
+
+            <div class="quote-section">
+                <p id="quote-display"></p>
+                <small>~ Gabriel Rolón ~</small>
+                <button id="new-quote-button">Otra frase linda ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const greetingCard = document.getElementById('greetingCard');
+        const clickPrompt = document.getElementById('click-prompt');
+        const rolonQuotes = [
+            "El dolor que no se habla es un dolor que no se va.",
+            "La felicidad no es un lugar al que se llega, sino una manera de viajar.",
+            "La angustia es una señal de que estamos vivos y de que algo nos importa.",
+            "No se trata de encontrar a alguien que te complete, sino de encontrar a alguien con quien compartir tu incompletitud.",
+            "Solo quien se anima a estar solo está preparado para amar sin depender.",
+            "A veces, el que se va, se lleva más de lo que deja. Y a veces, el que se queda, pierde más de lo que retiene."
+        ];
+        
+        const quoteDisplay = document.getElementById('quote-display');
+        const newQuoteButton = document.getElementById('new-quote-button');
+        let currentQuoteIndex = 0;
+
+        function showQuote(index) {
+            quoteDisplay.classList.add('fade-out');
+            setTimeout(() => {
+                quoteDisplay.textContent = `"${rolonQuotes[index]}"`;
+                quoteDisplay.classList.remove('fade-out');
+            }, 400);
+        }
+
+        greetingCard.addEventListener('click', () => {
+            if (!greetingCard.classList.contains('active')) {
+                greetingCard.classList.add('active');
+                clickPrompt.style.display = 'none';
+            }
+        });
+
+        newQuoteButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            currentQuoteIndex = (currentQuoteIndex + 1) % rolonQuotes.length;
+            showQuote(currentQuoteIndex);
+        });
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            currentQuoteIndex = Math.floor(Math.random() * rolonQuotes.length);
+            showQuote(currentQuoteIndex);
+        });
+    </script>
+
+</body>
+</html>
